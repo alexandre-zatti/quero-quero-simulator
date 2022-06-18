@@ -8,8 +8,7 @@ public class CameraEngine : MonoBehaviour
     public float boundX = 0.15f;
     public float boundY = 0.03f;
     private Dictionary<string, bool> brokenBoundStatus = new Dictionary<string, bool>();
-
-    //Late update to update the camera only after the player update is complete
+    
     private void LateUpdate()
     {
         Vector3 delta = Vector3.zero;
@@ -18,7 +17,6 @@ public class CameraEngine : MonoBehaviour
         float deltaY = focus.position.y - transform.position.y;
         
         this.updateCameraPosition(delta, deltaX, deltaY);
-        
     }
  
     private void updateCameraPosition(Vector3 delta, float deltaX, float deltaY)

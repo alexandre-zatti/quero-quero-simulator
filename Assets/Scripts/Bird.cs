@@ -7,7 +7,7 @@ public class Bird : MonoBehaviour
     private const string blockLayer = "Block";
     private const string actorLayer = "Actor";
     
-    private BoxCollider2D boxCollider;
+    private CapsuleCollider2D birdCollider;
 
     private RaycastHit2D raycastHit;
     
@@ -15,7 +15,7 @@ public class Bird : MonoBehaviour
     
     private void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
+        birdCollider = GetComponent<CapsuleCollider2D>();
     }
     
     private void Update()
@@ -26,18 +26,14 @@ public class Bird : MonoBehaviour
         moveDelta = new Vector3(horizontalMovement, verticalMovement, 0);
         
         this.setCharacterDirection(moveDelta);
-
-        //check if character is allowed to move in the y direction
+        
         if (this.isCharacterMovementAllowed(new Vector2(0, moveDelta.y), moveDelta.y))
         {
-            //move character in the y direction
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
         }
-
-        //check if character is allowed to move in the x direction
+        
         if (this.isCharacterMovementAllowed(new Vector2(moveDelta.x, 0), moveDelta.x))
         {
-            //move character in the x direction
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
         }
         
@@ -59,7 +55,7 @@ public class Bird : MonoBehaviour
     {
          RaycastHit2D hitCast = Physics2D.BoxCast(
             transform.position,
-            boxCollider.size,
+            birdCollider.size,
             0,
             direction,
             Mathf.Abs(distance * Time.deltaTime),
