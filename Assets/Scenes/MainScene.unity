@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2464580496616419262, guid: ce436df9dd2854922baa7e759ec425f3, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2464580496616419262, guid: ce436df9dd2854922baa7e759ec425f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -477,7 +477,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5493237698413348570, guid: 4b6decf81b5294119a492904123f4299, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5493237698413348570, guid: 4b6decf81b5294119a492904123f4299, type: 3}
       propertyPath: m_LocalPosition.x
@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5792843434599786483, guid: cb690653423a041cdbf92a4fa5e1cb01, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5792843434599786483, guid: cb690653423a041cdbf92a4fa5e1cb01, type: 3}
       propertyPath: m_LocalPosition.x
@@ -593,6 +593,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 478289326195333905, guid: 35e62fcaf34d148f38585eea25c80d02, type: 3}
+      propertyPath: uiObject
+      value: 
+      objectReference: {fileID: 1953736876}
+    - target: {fileID: 478289326195333907, guid: 35e62fcaf34d148f38585eea25c80d02, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5900832959393010893, guid: 35e62fcaf34d148f38585eea25c80d02, type: 3}
       propertyPath: m_Name
       value: Nest
