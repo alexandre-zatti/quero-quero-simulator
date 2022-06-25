@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     public Transform focus;
     public float moveSpeed = 0.4f;
     public Animator animator;
+    public EnemyHealthController healthBar;
+    public float hitpoints;
+    public float maxHitpoints;
     private Vector2 movement;
     private Vector2 direction;
     private Vector3 spawnPosition;
@@ -16,6 +19,8 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        hitpoints = maxHitpoints;
+        healthBar.setHealth(hitpoints, maxHitpoints);
         spawnPosition = transform.position;
     }
 
@@ -40,12 +45,18 @@ public class Enemy : MonoBehaviour
             transform.position = movement;
         }
     }
-    
+     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bird"))
         {
-            runToTheHills();
+            hitpoints -= 20;
+            healthBar.setHealth(hitpoints, maxHitpoints);
+
+            if (hitpoints <= 0)
+            {
+                runToTheHills();
+            }
         }
     }
 
@@ -65,10 +76,6 @@ public class Enemy : MonoBehaviour
 
     private void runToTheHills()
     {
-        // GameObject[] spawnLocations = GameObject.FindGameObjectsWithTag("Spawn");
-        //
-        // GameObject spawnLocation = spawnLocations[Random.Range(0, spawnLocations.Length)];
-        
         runBackToSpawn = true;
         moveSpeed = 1f;
     }
