@@ -12,6 +12,8 @@ public class Bird : MonoBehaviour
     private RaycastHit2D raycastHit;
     
     private Vector3 moveDelta;
+
+    public Animator animator;
     
     private void Start()
     {
@@ -23,9 +25,24 @@ public class Bird : MonoBehaviour
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         float verticalMovement = Input.GetAxisRaw("Vertical");
 
+        if(Input.GetAxis("Horizontal") == 1 || Input.GetAxis("Horizontal") == -1 || Input.GetAxis("Vertical") == 1 || Input.GetAxis("Vertical") == -1) 
+        {
+            animator.SetFloat("LastMoveX", Input.GetAxis("Horizontal"));
+            animator.SetFloat("LastMoveY", Input.GetAxis("Vertical"));
+        }
+
+        if(horizontalMovement == 0)
+        {
+            animator.SetFloat("Horizontal", verticalMovement);
+        } else {
+            animator.SetFloat("Horizontal", horizontalMovement);
+        }
+
+       
+
         moveDelta = new Vector3(horizontalMovement, verticalMovement, 0);
         
-        this.setCharacterDirection(moveDelta);
+        
         
         if (this.isCharacterMovementAllowed(new Vector2(0, moveDelta.y), moveDelta.y))
         {
@@ -39,17 +56,6 @@ public class Bird : MonoBehaviour
         
     }
 
-    private void setCharacterDirection(Vector3 moveDelta)
-    {
-        if (moveDelta.x < 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (moveDelta.x > 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-    }
 
     private bool isCharacterMovementAllowed(Vector2 direction, float distance)
     {
