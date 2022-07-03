@@ -46,18 +46,29 @@ public class Enemy : MonoBehaviour
         }
     }
      
-    private void OnTriggerEnter2D(Collider2D collision)
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.CompareTag("Bird"))
+    //     {
+    //         hitpoints -= 20;
+    //         healthBar.setHealth(hitpoints, maxHitpoints);
+
+    //         if (hitpoints <= 0)
+    //         {
+    //             runToTheHills();
+    //         }
+    //     }
+    // }
+
+    public void TakeDamage(int damage)
     {
-        if (collision.CompareTag("Bird"))
-        {
-            hitpoints -= 20;
-            healthBar.setHealth(hitpoints, maxHitpoints);
+        hitpoints -= damage;
+        healthBar.setHealth(hitpoints, maxHitpoints);
 
             if (hitpoints <= 0)
             {
                 runToTheHills();
             }
-        }
     }
 
     private Vector2 moveTowards(Vector3 focus)
