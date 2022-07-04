@@ -16,12 +16,14 @@ public class Enemy : MonoBehaviour
     private Vector2 direction;
     private Vector3 spawnPosition;
     private bool runBackToSpawn = false;
-
+    private AudioEngine audioEngine;
+    
     private void Start()
     {
         hitpoints = maxHitpoints;
         healthBar.setHealth(hitpoints, maxHitpoints);
         spawnPosition = transform.position;
+        audioEngine = FindObjectOfType<AudioEngine>();
     }
 
     private  void FixedUpdate()
@@ -45,21 +47,7 @@ public class Enemy : MonoBehaviour
             transform.position = movement;
         }
     }
-     
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.CompareTag("Bird"))
-    //     {
-    //         hitpoints -= 20;
-    //         healthBar.setHealth(hitpoints, maxHitpoints);
-
-    //         if (hitpoints <= 0)
-    //         {
-    //             runToTheHills();
-    //         }
-    //     }
-    // }
-
+  
     public void TakeDamage(int damage)
     {
         hitpoints -= damage;
@@ -67,6 +55,7 @@ public class Enemy : MonoBehaviour
 
             if (hitpoints <= 0)
             {
+                audioEngine.Play("correu");       
                 runToTheHills();
             }
     }

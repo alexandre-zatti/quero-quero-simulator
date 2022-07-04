@@ -6,25 +6,29 @@ public class Combat : MonoBehaviour
 {
     private float timeSinceGrito = 0.0f;
 
-    public AudioSource audioGrito;
+    public AudioEngine audioEngine; 
     public Transform attackPoint;
     public LayerMask enemyLayers;
 
     public float attackRange = 0.5f;
     public int attackDamage = 20;
-
     public float gritoCooldown;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        audioEngine = FindObjectOfType<AudioEngine>();
+    }
+    
     void Update()
     {
         timeSinceGrito += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode. Space) && timeSinceGrito > gritoCooldown) {
             
-            if(!audioGrito.isPlaying) {
-                audioGrito.Play();
-            }
+            audioEngine.Play("grito_quero_quero");
+            
             timeSinceGrito = 0;
             Attack();
         }

@@ -43,10 +43,13 @@
   <ItemGroup>
      <Compile Include="Assets/Scripts/ShowUI.cs" />
      <Compile Include="Assets/Scripts/Bird.cs" />
+     <Compile Include="Assets/Scripts/EnemyHealthController.cs" />
+     <Compile Include="Assets/Scripts/Nest.cs" />
      <Compile Include="Assets/Scripts/WaveSpawner.cs" />
      <Compile Include="Assets/Scripts/Enemy.cs" />
+     <Compile Include="Assets/Scripts/AudioEngine.cs" />
      <Compile Include="Assets/Scripts/CameraEngine.cs" />
-     <Compile Include="Assets/Scripts/EnemyHealthController.cs" />
+     <Compile Include="Assets/Scripts/Combat.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

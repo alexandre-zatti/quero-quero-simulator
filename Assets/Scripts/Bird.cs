@@ -14,11 +14,14 @@ public class Bird : MonoBehaviour
     private Vector3 moveDelta;
 
     public Animator animator;
+   
+    private AudioEngine audioEngine;
     
     private void Start()
     {
         birdCollider = GetComponent<CapsuleCollider2D>();
-    }
+        audioEngine = FindObjectOfType<AudioEngine>();
+   }
     
     private void Update()
     {
@@ -38,19 +41,17 @@ public class Bird : MonoBehaviour
             animator.SetFloat("Horizontal", horizontalMovement);
         }
 
-       
-
         moveDelta = new Vector3(horizontalMovement, verticalMovement, 0);
-        
-        
         
         if (this.isCharacterMovementAllowed(new Vector2(0, moveDelta.y), moveDelta.y))
         {
+            audioEngine.Play("grass");
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
         }
         
         if (this.isCharacterMovementAllowed(new Vector2(moveDelta.x, 0), moveDelta.x))
         {
+            audioEngine.Play("grass");
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
         }
         
