@@ -8,15 +8,18 @@ public class Nest : MonoBehaviour
     public Sprite[] sprites;
 
     public SpriteRenderer render;
+    
+    public GameObject uiObject;
 
     public int eggs = 3;
     
     private AudioEngine audioEngine;
-    
+
     private void Start()
     {
         audioEngine = FindObjectOfType<AudioEngine>();
-    }
+        uiObject.SetActive(false);
+   }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,8 +39,11 @@ public class Nest : MonoBehaviour
             
              if (eggs == 0){
                 render.sprite = sprites[eggs];
-                Debug.Log("Game over");
-            }
+                   
+                uiObject.SetActive(true);
+                
+                Time.timeScale = 0; 
+             }
         }
     }
 }
